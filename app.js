@@ -2,24 +2,23 @@ const express = require("express")
 const bodyParser = require("body-parser");
 const app = express();
 
+const aboutMe = require("./view/contacts")
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/', (req, res) => {
+app.get('/students', (req, res) => {
     console.log(req.headers) // req.body, req.headers, req.query
     const student = {
         name: "Pablo",
         group: "IS22-11"
     }
-    res.json(student)
+    res.send(student)
 })
 
-app.get('/students', (req, res) => {
+app.get('/huesos', (req, res) => {
     console.log(req.headers) // req.body, req.headers, req.query
-    const student = {
-        name: "Gleb",
-        group: "IS22-11"
-    }
-    res.json(student)
+    res.json(aboutMe)
+    
 })
 
 
