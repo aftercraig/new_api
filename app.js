@@ -1,27 +1,29 @@
-const express = require("express")
+const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-
-const aboutMe = require("./view/contacts")
+const main = require("./content/main");
+const aboutme = require("./content/aboutme");
+const games = require("./content/games");
+const pcspec = require("./content/pc");
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/students', (req, res) => {
-    console.log(req.headers) // req.body, req.headers, req.query
-    const student = {
-        name: "Pablo",
-        group: "IS22-11"
-    }
-    res.send(student)
+app.get('/', (request, response) => {
+    response.send(main)
 })
 
-app.get('/huesos', (req, res) => {
-    console.log(req.headers) // req.body, req.headers, req.query
-    res.json(aboutMe)
-    
+app.get('/aboutme', (request, response) => {
+    response.send(aboutme)
 })
 
+app.get('/games', (request, response) => {
+    response.send(games)
+})
 
-app.listen(8195, () => {
-    console.log("Сервер запущен на порте 8195.")
+app.get('/pc', (request, response) => {
+    response.send(pcspec)
+})
+
+app.listen(8000, () => {
+    console.log("Сервер запущен, порт: 8000.")
 })
