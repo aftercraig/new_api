@@ -8,6 +8,8 @@ const pcspec = require("./content/pc");
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (request, response) => {
     response.send(main)
 })
