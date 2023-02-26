@@ -1,13 +1,14 @@
 const express = require("express");
+const {request, response} = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const main = require("./content/main");
-const aboutme = require("./content/aboutme");
-const games = require("./content/games");
-const pcspec = require("./content/pc");
+
+const main = require("./view/content/main");
+const aboutme = require("./view/content/aboutme");
+const games = require("./view/content/games");
+const pcspec = require("./view/content/pc");
 
 app.use(bodyParser.urlencoded({ extended: false }))
-
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (request, response) => {
